@@ -1,0 +1,26 @@
+{
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://packages.drupal.org/8"
+        }
+    ],
+    "require": {
+        "composer/installers": "1.*",
+        "drupal/core-composer-scaffold": "^8.8"
+    },
+    "extra": {
+        "locations": {
+            "web-root": "/bitnami/drupal"
+        },
+        "installer-paths": {
+            "/opt/bitnami/drupal/core": ["type:drupal-core"],
+            "/bitnami/drupal/libraries/{$name}": ["type:drupal-library"],
+            "/bitnami/drupal/modules/contrib/{$name}": ["type:drupal-module"],
+            "/bitnami/drupal/profiles/contrib/{$name}": ["type:drupal-profile"],
+            "/bitnami/drupal/themes/contrib/{$name}": ["type:drupal-theme"],
+            "/bitnami/drupal/modules/custom/{$name}": ["type:drupal-custom-module"],
+            "/bitnami/drupal/themes/custom/{$name}": ["type:drupal-custom-theme"]
+        }
+    }
+}
