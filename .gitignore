@@ -1,22 +1,8 @@
 # Composer dependencies
 vendor
 
-# Drupal config
-drupal/settings.php
-
 # Drupal files, modules, themes, etc.
-!drupal/sites
-!drupal/profiles
-!drupal/modules
-!drupal/themes
-!drupal/libraries
+web
 
-drupal/sites/*
-drupal/profiles/*
-drupal/modules/*
-drupal/themes/*
-drupal/libraries/*
-
-# Bitnami hidden files
-drupal/.initialized
-drupal/.restored
+# Environment config files
+*.env
