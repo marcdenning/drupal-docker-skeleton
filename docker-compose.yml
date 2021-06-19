@@ -24,6 +24,7 @@ services:
       - 'drupal_data:/app'
     depends_on:
       - mariadb
+
 volumes:
   mariadb_data:
     driver: local
