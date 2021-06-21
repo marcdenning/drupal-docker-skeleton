@@ -89,14 +89,15 @@
  * @endcode
  */
 $databases['default']['default'] = [
-  'database' => $_ENV['DRUPAL_DATABASE_NAME'],
-  'username' => $_ENV['DRUPAL_DATABASE_USER'],
-  'password' => $_ENV['DRUPAL_DATABASE_PASSWORD'],
-  'host' => $_ENV['MARIADB_HOST'],
-  'port' => $_ENV['MARIADB_PORT_NUMBER'],
+  'database' => getenv('DRUPAL_DATABASE_NAME'),
+  'username' => getenv('DRUPAL_DATABASE_USER'),
+  'password' => getenv('DRUPAL_DATABASE_PASSWORD'),
+  'host' => getenv('MARIADB_HOST'),
+  'port' => getenv('MARIADB_PORT_NUMBER'),
   'driver' => 'mysql',
+  'namespace' => 'Drupal\\Core\\Database\\Driver\\mysql',
   'prefix' => '',
-  'collation' => 'utf8mb4_general_ci',
+  'collation' => 'utf8mb4_general_ci'
 ];
 
 /**
@@ -262,7 +263,7 @@ $databases['default']['default'] = [
  * directory in the public files path. The setting below allows you to set
  * its location.
  */
-$settings['config_sync_directory'] = $_ENV['DRUPAL_CONFIG_SYNC_DIR'];
+$settings['config_sync_directory'] = getenv('DRUPAL_CONFIG_SYNC_DIR');
 
 /**
  * Settings:
@@ -550,7 +551,7 @@ $settings['update_free_access'] = FALSE;
  *
  * @see \Drupal\Component\FileSystem\FileSystem::getOsTemporaryDirectory()
  */
-# $settings['file_temp_path'] = '/tmp';
+$settings['file_temp_path'] = '/tmp';
 
 /**
  * Session write interval:

@@ -1,14 +1,21 @@
-# Running Custom Drupal in Containers
+# Drupal Docker Skeleton
 
-The first time the container is brought up, it will install Drupal if it does not detect an existing database.
-Otherwise, the container will connect to an existing install without disrupting data.
+> A sample repo intended to be cloned for starting a new Drupal 9+ site.
 
-Locally, map the project directory to `/bitnami` to copy up application files to the container.
-In live environments, this should be a managed volume according to the platform being used.
-Environment variables are utilized by the Bitnami init scripts to populate the `settings.php` file.
-
-Get started:
+## Get started
 
 ```bash
-docker-compose up -d
+docker compose up -d
+```
+
+## Install Drupal
+
+```bash
+docker compose exec drupal bash
+
+# In the Drupal container
+cd /app
+chmod 774 web/sites/default/settings.php
+chgrp daemon web/sites/default/settings.php
+drush site:install -y minimal
 ```

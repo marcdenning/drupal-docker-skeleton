@@ -1,4 +1,4 @@
-version: '2'
+version: '3'
 
 services:
   mariadb:
@@ -7,26 +7,26 @@ services:
       - '3306:3306'
     env_file: .mariadb.env
     volumes:
-      - 'mariadb_data:/bitnami'
+      - 'mariadb_data:/bitnami/mariadb'
   nginx:
     image: 'bitnami/nginx:1.19.10'
     ports:
       - '8080:8080'
     volumes:
       - './config/nginx/drupal.conf:/opt/bitnami/nginx/conf/server_blocks/drupal.conf'
-      - 'drupal_data:/app:ro'
+      - 'drupal_data:/app/web/sites/default/files:ro'
+    depends_on:
+      - drupal
   drupal:
     build:
       context: ./
       dockerfile: Dockerfile
     env_file: .drupal.env
     volumes:
-      - 'drupal_data:/app'
+      - 'drupal_data:/app/web/sites/default/files'
     depends_on:
       - mariadb
 
 volumes:
   mariadb_data:
-    driver: local
   drupal_data:
-    driver: local

@@ -6,3 +6,5 @@ web
 
 # Environment config files
 *.env
+
+!config/drupal/sync
