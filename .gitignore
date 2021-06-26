@@ -3,6 +3,7 @@ vendor
 
 # Drupal files, modules, themes, etc.
 web
+config/drupal/settings.php
 
 # Environment config files
 *.env

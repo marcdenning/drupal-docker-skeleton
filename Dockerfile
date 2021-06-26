@@ -10,9 +10,10 @@ ADD composer.json /app/
 RUN cd /app \
   && composer install
 RUN mkdir web/sites/default/files \
-  && chmod -R 774 web/sites/default/files \
-  && chgrp -R daemon web/sites/default/files
-
-ADD config/drupal/settings.php web/sites/default/settings.php
+  && chmod -R 774 web/sites/default \
+  && chgrp -R daemon web/sites/default \
+  && mkdir sync \
+  && chgrp -R daemon sync \
+  && chmod -R 774 sync
 
 ENV PATH="/app/vendor/bin:$PATH"

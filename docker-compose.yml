@@ -14,6 +14,7 @@ services:
       - '8080:8080'
     volumes:
       - './config/nginx/drupal.conf:/opt/bitnami/nginx/conf/server_blocks/drupal.conf'
+      - 'drupal_app:/app:ro'
       - 'drupal_data:/app/web/sites/default/files:ro'
     depends_on:
       - drupal
@@ -21,12 +22,14 @@ services:
     build:
       context: ./
       dockerfile: Dockerfile
-    env_file: .drupal.env
     volumes:
+      - 'drupal_app:/app'
+      - './config/drupal/settings.php:/app/web/sites/default.settings.php' # Comment this line out the first time starting the container
       - 'drupal_data:/app/web/sites/default/files'
     depends_on:
       - mariadb
 
 volumes:
   mariadb_data:
+  drupal_app:
   drupal_data:
