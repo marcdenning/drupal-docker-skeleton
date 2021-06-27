@@ -10,10 +10,10 @@ ADD composer.json /app/
 RUN cd /app \
   && composer install
 RUN mkdir web/sites/default/files \
-  && chmod -R 774 web/sites/default \
+  && chmod -R 775 web/sites/default \
   && chgrp -R daemon web/sites/default \
   && mkdir sync \
   && chgrp -R daemon sync \
-  && chmod -R 774 sync
+  && chmod -R 775 sync
 
 ENV PATH="/app/vendor/bin:$PATH"
