@@ -16,4 +16,6 @@ RUN mkdir web/sites/default/files \
   && chgrp -R daemon sync \
   && chmod -R 775 sync
 
+ADD config/drupal/sync /app/sync
+
 ENV PATH="/app/vendor/bin:$PATH"

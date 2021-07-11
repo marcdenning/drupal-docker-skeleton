@@ -24,8 +24,9 @@ services:
       dockerfile: Dockerfile
     volumes:
       - 'drupal_app:/app'
-      - './config/drupal/settings.php:/app/web/sites/default.settings.php' # Comment this line out the first time starting the container
+      - './config/drupal/settings.php:/app/web/sites/default/settings.php' # Comment this line out the first time starting the container
       - 'drupal_data:/app/web/sites/default/files'
+      - './config/drupal/sync:/app/sync'
     depends_on:
       - mariadb
 
