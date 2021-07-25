@@ -6,6 +6,7 @@
 
 ```bash
 docker compose up -d
+aws --endpoint-url=http://localhost:4566 s3 mb s3://drupalfiles # Use the localstack container to create a local AWS S3 bucket
 ```
 
 ## Install Drupal
@@ -31,6 +32,22 @@ exit
 # Copy the generated settings.php file locally to be mounted as a "secret"
 docker compose ps # Get the name of the Drupal container
 docker cp container-name:/app/web/sites/default/settings.php ./config/drupal/settings.php # Copy the file to your local project directory
+```
+
+Update `settings.php` to configure `trusted_host_patterns` and file system settings:
+
+```php
+$settings['file_private_path'] = '/app/private';
+
+$settings['trusted_host_patterns'] = [
+  '^drupal.local$',
+];
+
+$settings['s3fs.access_key'] = 'accesskey';
+$settings['s3fs.secret_key'] = 'secretkey';
+$settings['s3fs.use_s3_for_public'] = TRUE;
+$settings['s3fs.use_s3_for_private'] = TRUE;
+$settings['php_storage']['twig']['directory'] = '/app/private';
 ```
 
 ## Configuration Management

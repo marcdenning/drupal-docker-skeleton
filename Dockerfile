@@ -12,9 +12,9 @@ RUN cd /app \
 RUN mkdir web/sites/default/files \
   && chmod -R 775 web/sites/default \
   && chgrp -R daemon web/sites/default \
-  && mkdir sync \
-  && chgrp -R daemon sync \
-  && chmod -R 775 sync
+  && mkdir sync private \
+  && chgrp -R daemon sync private \
+  && chmod -R 775 sync private
 
 ADD config/drupal/sync /app/sync
 

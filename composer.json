@@ -19,6 +19,7 @@
         "drupal/core-composer-scaffold": "^9.1",
         "drupal/core-project-message": "^9.1",
         "drupal/core-recommended": "^9.1",
+        "drupal/s3fs": "3.0-beta2",
         "drush/drush": "^10.5"
     },
     "conflict": {
